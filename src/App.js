@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './assets/logo.svg';
-import Button from '@material-ui/core/Button';
+import HelloWorld from './components/HelloWorld';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Clock from './components/Clock';
 import './App.css';
 
@@ -8,15 +8,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+        <Router>
+          <div>
+            <Link to="/">Home</Link>
+            <Link to="/clock">Clock</Link>
 
-          <Button variant="contained" color="primary">
-            Hello World
-          </Button>
-
-          <Clock />
-        </header>
+            <Route exact path="/" component={HelloWorld} />
+            <Route path="/clock" component={Clock} />
+          </div>
+        </Router>
       </div>
     );
   }
